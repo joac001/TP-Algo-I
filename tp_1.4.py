@@ -14,12 +14,15 @@ from tkinter import *
 from functools import partial
 # para tomar el tiempo de la partida utilizamos esta libreria
 import time
+
+import interfaz as iz
+
 # Definimos una variable para cronometrar el timepo desde el inicio de la partida
 inicio = time.time()
 
 
 # Julian Rando
-def main(jugador_1: str, jugador_2: str) -> None:
+def main(jugador_1: str, jugador_2: str) -> None: # pasarle el dict jugadores
     # Funcion principal que ayuda a recorrer el programa.
 
     eleccion_jugadores = []
@@ -346,3 +349,5 @@ def fin_de_partida(manos_jugadas_p1: int, manos_jugadas_p2: int, jugador_1: str,
     print(chr(27) + "[1;37m")
 
 
+jugadores = iz.crear_interfaz()
+main(jugadores)
