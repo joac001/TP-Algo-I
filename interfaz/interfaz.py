@@ -1,7 +1,7 @@
 from tkinter import *
 from functools import partial
-import Botones as bt
 
+from . import botones as bt
 
 # Interfaz raíz
 raiz = Tk()
@@ -17,7 +17,7 @@ raiz_frame.pack()
 
 # labels
 label_titulo_ingreso = Label(
-    raiz_frame, text="Inicie sesion:", font=("Arial Black", 9))
+    raiz_frame, text="Iniciar sesion", font=("Arial Black", 12))
 label_titulo_ingreso.config(bg="#FF6800")
 label_titulo_ingreso.grid(row=0, column=1, padx=10, pady=10)
 
@@ -36,7 +36,7 @@ label_contra_ingreso.grid(row=2, column=0, padx=10, pady=10)
 entry_usuario_ingreso = Entry(raiz_frame)
 entry_usuario_ingreso.grid(row=1, column=1, padx=10, pady=10)
 
-# Contraseña
+# Contrasenia
 entry_contra_ingreso = Entry(raiz_frame)
 entry_contra_ingreso.grid(row=2, column=1, padx=10, pady=10)
 entry_contra_ingreso.config(show="*")

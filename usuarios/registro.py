@@ -19,7 +19,7 @@ def leer(usuarios):
 
 
 def registro(nombre: str, contra: str):
-    archivo = open("Usuarios.txt", "r+")
+    archivo = open("./Datos/Usuarios.csv", "r+")
     registro = leer(archivo)
     esta_registrado = False
 
@@ -36,9 +36,10 @@ def registro(nombre: str, contra: str):
         archivo.write(f"\n{nombre},{contra}")
         print("Usuario registrado con exito")
 
+    archivo.close()
+
 
 def validar_nombre_usuario(nombre: str) -> bool:
-    
     es_valido = False
 
     if len(nombre) >= 4 and len(nombre) <= 15:
@@ -58,7 +59,7 @@ def validar_contrasenia(contra: str) -> bool:
         if excepcion in contra:
             contra_alnum = contra.replace(excepcion, "")
 
-    if len(contra) >= 8 and len(contra) <= 12 and (contra.find("") != -1 or contra.find("-") != -1) and contra_alnum.isalnum():
+    if len(contra) >= 8 and len(contra) <= 12 and (contra.find("_") != -1 or contra.find("-") != -1) and contra_alnum.isalnum():
 
         contiene_mayuscula = False
         contiene_minuscula = False
@@ -78,7 +79,7 @@ def validar_contrasenia(contra: str) -> bool:
     return es_valido
 
 
-def ingreso_usuario_nuevo(nombre: str, lista_contras: list):
+def registro_usuario_nuevo(nombre: str, lista_contras: list):
     contra_uno, contra_dos = lista_contras[0], lista_contras[1]
     usuario = validar_nombre_usuario(nombre)
 
@@ -87,11 +88,10 @@ def ingreso_usuario_nuevo(nombre: str, lista_contras: list):
 
         if usuario and contrasenia:
             registro(nombre, contra_uno)
-            print("¡Nombre y contrasenia validos!")
         elif not usuario:
             print("¡Nombre de usuario no valido!")
         elif not contrasenia:
             print("¡Contrasenia no valida!")
 
     else:
-        print("¡Las contraseñas no son iguales!")
+        print("¡Las contrasenias no son iguales!")

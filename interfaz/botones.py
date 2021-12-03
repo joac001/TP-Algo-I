@@ -1,23 +1,25 @@
 from tkinter import *
 from functools import partial
-import Registro as rg
-import Inicio_ses as ins
 
+from usuarios import registro as rg, inicio_ses as ins
+import main as mn
 
 # Jugar
 
 
 def codigo_boton_jugar():
-    iniciar_partida = True
-
-
+    mn.main()
 # Registro
+
 
 def codigo_boton_envio_registro(entry_usuario, entry_contra_uno, entry_contra_dos):
     # Recopilacion de datos de usuario
     usuario = entry_usuario.get()
+    entry_usuario.delete(0, "end")
     lista_contras = [entry_contra_uno.get(),
                      entry_contra_dos.get()]
+    entry_contra_uno.delete(0, "end")
+    entry_contra_dos.delete(0, "end")
 
     rg.registro_usuario_nuevo(usuario, lista_contras)
 
@@ -26,7 +28,7 @@ def codigo_boton_registro():
 
     v_registro = Tk()
     v_registro.title("Registro")
-    v_registro.geometry('500x250')
+    v_registro.geometry('500x230')
     v_registro.config(bg="#FF6800")
     v_registro.iconbitmap("zanahoria.ico")
 
@@ -37,7 +39,7 @@ def codigo_boton_registro():
     # Labels - Registro
     # TITULO
     label_titulo_registro = Label(
-        v_registro_frame, text="Registre un usuario:", font=("Arial Black", 9))
+        v_registro_frame, text="Registre un usuario", font=("Arial Black", 10))
 
     label_titulo_registro.config(bg="#FF6800")
     label_titulo_registro.grid(row=0, column=1, padx=10, pady=10)
@@ -67,7 +69,7 @@ def codigo_boton_registro():
     entry_usuario_registro = Entry(v_registro_frame)
     entry_usuario_registro.grid(row=1, column=1, padx=10, pady=10)
 
-    # Contraseña
+    # CONTRASEÑA
     # 1
     entry_contra_uno_registro = Entry(v_registro_frame)
     entry_contra_uno_registro.grid(row=2, column=1, padx=10, pady=10)
@@ -90,7 +92,8 @@ def codigo_boton_registro():
 def codigo_boton_ingreso(entry_usuario, entry_contra_uno):
     # Recopilacion de datos de usuario
     usuario = entry_usuario.get()
+    entry_usuario.delete(0, "end")
     # En caso de ingreso
     contra = entry_contra_uno.get()
-
-    ins.validar_usuario_y_contraseña(usuario, contra)
+    entry_contra_uno.delete(0, "end")
+    ins.validar_usuario_y_contrasenia(usuario, contra)
