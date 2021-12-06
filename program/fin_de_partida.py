@@ -1,6 +1,7 @@
 from os import remove
 
 import time
+import pandas as pd
 
 from usuarios import registro as rg
 
@@ -11,7 +12,7 @@ def fin_de_partida(registro_partida: dict, tiempo: tuple, PUNTOS_JUGADOR, MANOS_
     # nombres de los jugadores, con su respectiva cantidad de aciertos, el total de intentos y la cantidad promedio de intentos.
     registro_ordenado = diccionario_ordenado(registro_partida)
 
-    archivo = open("./Datos/Partida_individual.csv", "w")
+    archivo = open("./datos/Partida_individual.csv", "w")
     registro = rg.leer(archivo)
     archivo.write("Jugador,Aciertos,Intentos")
     for jugador in registro_ordenado:
@@ -26,7 +27,7 @@ def fin_de_partida(registro_partida: dict, tiempo: tuple, PUNTOS_JUGADOR, MANOS_
 
     archivo.close()
 
-    remove("./Datos/Partida_individual.csv")
+    remove("./datos/Partida_individual.csv")
 
 
 # AGREGAR AUTOR
@@ -60,3 +61,7 @@ def diccionario_ordenado(diccionario: dict) -> dict:
                 diccionario_ordenado[clave] = diccionario[clave]
 
     return diccionario_ordenado
+
+
+def tabla_datos_panda():
+    df = pd.read_csv("./datos/Partida_individual.csv", index_col="Jugador")

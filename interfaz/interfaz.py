@@ -1,7 +1,6 @@
 from tkinter import *
 from functools import partial
-
-from . import botones as bt
+import botones as bt
 
 # Interfaz raíz
 raiz = Tk()
@@ -64,5 +63,31 @@ boton_jugar = Button(raiz_frame, text="Iniciar Partida", font=(
 boton_jugar.grid(row=5, column=1, padx=10, pady=10)
 boton_jugar.config(bg="#FCA468", relief="solid", bd=1.5)
 
-
 raiz.mainloop()
+
+def mas_partidas():
+    raiz = Tk()
+    raiz.title("Memotest")
+    raiz.geometry("350x50")
+    raiz.config(bg="#FF6800")
+
+    raiz_frame = Frame(raiz, width=100, height=100)
+    raiz_frame.config(bg="#FF6800")
+    raiz_frame.pack()
+
+    label_titulo_ingreso = Label(
+    raiz_frame, text="¿Desea seguir jugando?", font=("Arial Black", 12))
+    label_titulo_ingreso.config(bg="#FF6800")
+    label_titulo_ingreso.grid(row=0, column=0, padx=10, pady=10)
+
+    boton_si = Button(raiz_frame, text="SI", font=(
+    "Arial Black", 9), command=partial(bt.sigue_jugando))
+    boton_si.config(bg="#FCA468", relief="solid", bd=1.5)
+    boton_si.grid(row=0, column=1, padx=10, pady=10)
+
+    boton_no = Button(raiz_frame, text="NO", font=(
+    "Arial Black", 9), command=partial(bt.no_sigue_jugando))  
+    boton_no.config(bg="#FCA468", relief="solid", bd=1.5)
+    boton_no.grid(row=0, column=2, padx=10, pady=10)
+
+    raiz.mainloop()

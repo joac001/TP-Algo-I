@@ -1,13 +1,11 @@
 import main as mn
-from interfaz import botones as bt
-from usuarios import registro as rg
+import registro as rg
 
 USUARIO = 0
 CONTRASENIA = 1
 
-
 def validar_usuario_y_contrasenia(usuario: str, contra: str) -> bool:
-    archivo = open("./Datos/Usuarios.csv", "r")
+    archivo = open("usuarios.csv", "r")
     registro = rg.leer(archivo)
     esta_registrado = False
     clave_correcta = False
@@ -37,14 +35,13 @@ def validar_usuario_y_contrasenia(usuario: str, contra: str) -> bool:
     else:
         print(f"El usuario {usuario} no esta registrado")
 
-
 jugadores = []
-
-
 def suma_de_jugadores(usuario: str):
     contador = 0
     jugadores.append(usuario)
-    print(jugadores)
     contador += 1
+    print ("Los usuarion ingresados son:")
+    for jugador in jugadores:
+        print(f"-> {jugador}")
 
-    mn.registro_de_jugadores_iniciales(jugadores)
+        return jugadores

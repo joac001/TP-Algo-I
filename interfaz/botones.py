@@ -1,17 +1,13 @@
 from tkinter import *
 from functools import partial
 
-from usuarios import registro as rg, inicio_ses as ins
+import registro as rg
+import inicio_ses as ins
 import main as mn
-
-# Jugar
-
 
 def codigo_boton_jugar():
     mn.main()
 # Registro
-
-
 def codigo_boton_envio_registro(entry_usuario, entry_contra_uno, entry_contra_dos):
     # Recopilacion de datos de usuario
     usuario = entry_usuario.get()
@@ -22,7 +18,6 @@ def codigo_boton_envio_registro(entry_usuario, entry_contra_uno, entry_contra_do
     entry_contra_dos.delete(0, "end")
 
     rg.registro_usuario_nuevo(usuario, lista_contras)
-
 
 def codigo_boton_registro():
 
@@ -84,11 +79,7 @@ def codigo_boton_registro():
 
     boton_envio_registro.grid(row=4, column=1, padx=10, pady=10)
     boton_envio_registro.config(bg="#FCA468", relief="solid", bd=1.5)
-
-
 # Inicio sesion
-
-
 def codigo_boton_ingreso(entry_usuario, entry_contra_uno):
     # Recopilacion de datos de usuario
     usuario = entry_usuario.get()
@@ -97,3 +88,9 @@ def codigo_boton_ingreso(entry_usuario, entry_contra_uno):
     contra = entry_contra_uno.get()
     entry_contra_uno.delete(0, "end")
     ins.validar_usuario_y_contrasenia(usuario, contra)
+
+def sigue_jugando():
+    mn.main()
+
+def no_sigue_jugando():
+    return False

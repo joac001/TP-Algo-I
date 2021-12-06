@@ -19,7 +19,7 @@ def leer(usuarios):
 
 
 def registro(nombre: str, contra: str):
-    archivo = open("./Datos/Usuarios.csv", "r+")
+    archivo = open(".usuarios.csv", "r+")
     registro = leer(archivo)
     esta_registrado = False
 
