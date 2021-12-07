@@ -12,7 +12,7 @@ def mas_partidas():
 
     v_continuar_frame = Frame(v_continuar, width=100, height=100)
     v_continuar_frame.config(bg="#FF6800")
-    v_continuar_frame.place(relheight=1, relwidth=1)
+    v_continuar_frame.pack()
 
     label_titulo = Label(
         v_continuar_frame, text="¿Desea seguir jugando?", font=("Arial Black", 12))

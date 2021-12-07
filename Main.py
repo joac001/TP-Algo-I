@@ -13,7 +13,7 @@ def interfaz_principal():
 
     raiz_frame = Frame(raiz, width=1200, height=600)
     raiz_frame.config(bg="#FF6800")
-    raiz_frame.grid(row=0, column=0)
+    raiz_frame.place(relheight=1, relwidth=1)
 
     # labels
     label_titulo_ingreso = Label(

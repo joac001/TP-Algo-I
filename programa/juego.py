@@ -233,7 +233,7 @@ def obtencion_ganadores(registro_ordenado: dict) -> list:
     ganadores = []
 
     for jugador in registro_ordenado:
-        if registro_ordenado[jugador] == sorted(registro_ordenado.values(), key=lambda i: (i[ct.MANOS_JUGADAS_JUGADOR], i[ct.PUNTOS_JUGADOR]))[0]:
+        if registro_ordenado[jugador] == sorted(registro_ordenado.values(), key=lambda i: (i[ct.PUNTOS_JUGADOR], i[ct.MANOS_JUGADAS_JUGADOR]), reverse=True)[0]:
             ganadores.append(jugador)
 
     return ganadores
