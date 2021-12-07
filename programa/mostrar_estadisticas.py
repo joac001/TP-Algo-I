@@ -3,11 +3,14 @@ import pandas as pd
 import tkinter as tk
 from tkinter import ttk
 
+# Joaquin Ordonez : Poner bibliografia
+
 
 def mostrar_estadisticas(ruta_archivo: str):
+    # Interfaz grafica para mostrar estadisticas de la partida
     v_estadisticas = tk.Tk()
     v_estadisticas.title("Estadisticas de la partida")
-    v_estadisticas.iconbitmap("zanahoria.ico")
+    v_estadisticas.iconbitmap("archivos/zanahoria.ico")
     v_estadisticas.geometry("1200x350")
     v_estadisticas.pack_propagate(False)
 
@@ -47,6 +50,3 @@ def mostrar_estadisticas(ruta_archivo: str):
         v_datos.insert("", "end", values=row)
 
     v_estadisticas.mainloop()
-
-
-mostrar_estadisticas("partidas.csv")

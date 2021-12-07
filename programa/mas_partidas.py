@@ -1,15 +1,14 @@
-import os
 from tkinter import *
 from functools import partial
 
 
 def mas_partidas():
-
+    # Interfaz deseo de jugar otra partida
     v_continuar = Tk()
     v_continuar.title("Memotest")
     v_continuar.geometry("350x50")
     v_continuar.config(bg="#FF6800")
-    v_continuar.iconbitmap("zanahoria.ico")
+    v_continuar.iconbitmap("archivos/zanahoria.ico")
 
     v_continuar_frame = Frame(v_continuar, width=100, height=100)
     v_continuar_frame.config(bg="#FF6800")
@@ -34,11 +33,13 @@ def mas_partidas():
 
 
 def sigue_jugando(v_continuar):
+    # Boton si quiere seguir jugando
     v_continuar.destroy()
 
 
 def no_sigue_jugando(v_continuar):
-    archivo = open("sigue_jugando.csv", "w")
+    # Boton no quiere seguir jugando
+    archivo = open("archivos/sigue_jugando.csv", "w")
     archivo.write("SIGUE_JUGANDO,False")
     archivo.close()
     v_continuar.destroy()
