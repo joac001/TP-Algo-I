@@ -1,70 +1,64 @@
-import constantes as ct
+import random
+
+from programa import constantes as ct
 
 
-def crear_y_mezclar_tableros() -> tuple:
+def crear_y_mezclar_tableros() -> tuple:  # Lucas Nuñez
     # Crea los tableros, y luego los mezcla
 
     tablero = crear_tablero_original()
 
-    tableros_ocultos = crear_tablero_oculto_y_reset()
+    tablero_oculto, tablero_reset = crear_tablero_oculto_y_reset()
 
-    tablero_oculto, tablero_reset = tableros_ocultos[0],  tableros_ocultos[1]
-
-    tablero = mezclar(tablero)
+    mezclar(tablero)
 
     return tablero_oculto, tablero, tablero_reset
 
 
-def crear_tablero_oculto_y_reset() -> tuple:
+def crear_tablero_oculto_y_reset() -> tuple:  # Lucas Nuñez
     # Genera dos tableros, oculto y reset
-    contador = 0
     tablero_oculto = []
     tablero_reset = []
 
-    for fila in range(ct.DURACION):
+    for fila in range(ct.RANGO_FILAS):
         tablero_oculto.append([])
         tablero_reset.append([])
-        for columna in range(ct.DURACION):
-            tablero_oculto[fila].append(contador)
-            tablero_reset[fila].append(contador)
-            contador += 1
+        for columna in range(ct.RANGO_COLUMNAS):
+            tablero_oculto[fila].append(columna)
+            tablero_reset[fila].append(columna)
 
-    tableros = tablero_oculto, tablero_reset
-
-    return tableros
+    return tablero_oculto, tablero_reset
 
 
-def crear_tablero_original() -> list:
-    # Genera tablero
+def crear_tablero_original() -> list:  # Lucas Nuñez
+    # Genera tablero con letras ordenadas y visibles
     tablero = []
     fila = 0
     columna = 0
 
-    for fila in range(ct.DURACION):
+    for fila in range(ct.RANGO_FILAS):
         tablero.append([])
 
-    for fila in range(ct.DURACION):
-        for letra in ct.LETRAS[columna:columna + ct.DURACION]:
+    for fila in range(ct.RANGO_FILAS):
+        for letra in ct.LETRAS[columna:columna + ct.RANGO_COLUMNAS]:
             tablero[fila].append(letra)
-        columna += ct.DURACION
+        columna += ct.RANGO_COLUMNAS
 
     return tablero
 
 
-def mezclar(tablero: list) -> list:
+def mezclar(tablero: list) -> list:  # Lucas Nuñez
     # Genera un orden aleatorio en las fichas del tablero
     lista = []
 
-    rango_letras = ct.CANTIDAD_FICHAS // ct.DURACION
-
-    for fila in range(rango_letras):
-        for columna in range(rango_letras):
+    for fila in range(ct.RANGO_FILAS):
+        for columna in range(ct.RANGO_COLUMNAS):
             lista.append(tablero[fila][columna])
 
-    # random.shuffle(lista)
+    random.shuffle(lista)
 
-    for fila in range(rango_letras):
-        for columna in range(rango_letras):
-            tablero[fila][columna] = lista[fila * rango_letras + columna]
+    for fila in range(ct.RANGO_FILAS):
+        for columna in range(ct.RANGO_COLUMNAS):
+            tablero[fila][columna] = lista[fila * ct.RANGO_COLUMNAS + columna]
 
     return tablero

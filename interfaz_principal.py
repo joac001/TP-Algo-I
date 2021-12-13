@@ -1,10 +1,11 @@
 from tkinter import *
 from functools import partial
 
-import botones as bt
+from interfaz import botones as bt
 
 
-def interfaz_principal():
+def interfaz_principal() -> None:  # Joaquin Ordoñez
+    # Interfaz principal del juego
     raiz = Tk()
     raiz.title("Memotest")
     raiz.geometry('500x230')
@@ -13,7 +14,7 @@ def interfaz_principal():
 
     raiz_frame = Frame(raiz, width=1200, height=600)
     raiz_frame.config(bg="#FF6800")
-    raiz_frame.place(relheight=1, relwidth=1)
+    raiz_frame.grid(row=0, column=0)
 
     # labels
     label_titulo_ingreso = Label(
@@ -39,7 +40,7 @@ def interfaz_principal():
     # Contrasenia
     entry_contra_ingreso = Entry(raiz_frame)
     entry_contra_ingreso.grid(row=2, column=1, padx=10, pady=10)
-    entry_contra_ingreso.config(show="*")
+    # entry_contra_ingreso.config(show="*")
 
     # Botones
     # Ingreso
@@ -59,9 +60,13 @@ def interfaz_principal():
     # inicio partida
     boton_jugar = Button(raiz_frame, text="Iniciar Partida", font=(
         "Arial Black", 9), command=partial(bt.codigo_boton_jugar, raiz))
-
-    boton_jugar.grid(row=5, column=1, padx=10, pady=10)
+    boton_jugar.grid(row=5, column=2, padx=10, pady=10)
     boton_jugar.config(bg="#FCA468", relief="solid", bd=1.5)
+
+    boton_cerrar = Button(raiz_frame, text="Cerrar juego", font=(
+        "arial Black", 9), command=partial(bt.codigo_cerrar_juego, raiz))
+    boton_cerrar.grid(row=5, column=0, padx=10, pady=10)
+    boton_cerrar.config(bg="#FCA468", relief="solid", bd=1.5)
 
     raiz.mainloop()
 

@@ -1,21 +1,27 @@
 from tkinter import *
 from functools import partial
 
-import validacion_de_usuario as vdu
-import programa.juego as jg
+from programa import validacion_de_usuario as vdu
+from programa import juego as jg
 
 
-def codigo_boton_jugar(raiz):
+def codigo_cerrar_juego(raiz):  # Renzo Martin
+    # Cierra el programa
+    raiz.destroy()
+
+
+def codigo_boton_jugar(raiz):  # Renzo Martin
+    # Inicia el juego
     raiz.destroy()
     jg.main()
 
 
+# Renzo Martin
 def codigo_boton_envio_registro(v_registro, entry_usuario, entry_contra_uno, entry_contra_dos):
     # Recopilacion de datos de usuario
     usuario = entry_usuario.get()
     entry_usuario.delete(0, "end")
-    lista_contras = [entry_contra_uno.get(),
-                     entry_contra_dos.get()]
+    lista_contras = (entry_contra_uno.get(), entry_contra_dos.get())
     entry_contra_uno.delete(0, "end")
     entry_contra_dos.delete(0, "end")
 
@@ -24,8 +30,12 @@ def codigo_boton_envio_registro(v_registro, entry_usuario, entry_contra_uno, ent
     vdu.registro_usuario_nuevo(usuario, lista_contras)
 
 
-def codigo_boton_registro():
-
+def codigo_boton_registro():  # Joaquin Ordoñez
+    # Crea la interfaz del reistro y llama a la validacion
+    print("\n---------------------------------------------------------------------------------------------------------------------------------------")
+    print("\nEL nombre de usuario debe tener entre 4 y 15 caracteres, debe estar formado solo por letras, números y el bajo guion")
+    print('\nLa contraseña debe tener entre 8 y 12 caracteres, debe estar formada solo por letras, letras acentuadas, numeros, "_" y "-".')
+    print('Debe tener si o si un "_" o "-", un numero, una mayuscula y una minuscula')
     v_registro = Tk()
     v_registro.title("Registro")
     v_registro.geometry('500x230')
@@ -86,11 +96,10 @@ def codigo_boton_registro():
     boton_envio_registro.config(bg="#FCA468", relief="solid", bd=1.5)
 
 
-def codigo_boton_ingreso(raiz, entry_usuario, entry_contra_uno):
-    # Recopilacion de datos de usuario
+def codigo_boton_ingreso(raiz, entry_usuario, entry_contra_uno):  # Joaquin Ordoñez
+    # Recopilacion de datos de usuario para el ingreso
     usuario = entry_usuario.get()
     entry_usuario.delete(0, "end")
-    # En caso de ingreso
     contra = entry_contra_uno.get()
     entry_contra_uno.delete(0, "end")
-    vdu.validar_usuario_y_contrasenia(raiz, usuario, contra)
+    vdu.usuario_y_claves_validas(raiz, usuario, contra)
